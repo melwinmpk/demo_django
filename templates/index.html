@@ -34,8 +34,8 @@
 									<li class="active"><a href="index.html">Home</a></li>
 									<li><a href="about.html">About us</a></li>
 									<li><a href="#">Services</a></li>
-									<li><a href="news.html">News</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="/accounts/register">Register</a></li>
+									<li><a href="contact.html">Login</a></li>
 								</ul>
 							</nav>
 							<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
@@ -252,7 +252,8 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{{baseUrl}}/{{dest.img}}" alt="">
+<!--								<img src="{{baseUrl}}/{{dest.img}}" alt="">-->
+                                <img src="{{dest.img.url}}" alt="">
 								{% if dest.offer %}
 									<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 								{% endif %}
