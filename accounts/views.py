@@ -22,7 +22,8 @@ def register(request):
                 user = User.objects.create_user(username = username,password = password1,email=email,first_name=first_name,last_name=last_name)
                 user.save();
                 messages.info(request, 'UserId Created')
-                return redirect('/')
+                return redirect('login')
+                # return redirect('/')
         else:
             messages.info(request,'password not matching.....')
             return redirect('register')
@@ -31,4 +32,21 @@ def register(request):
 #
 
 def login(request):
-    pass
+    if request.method == 'POST':
+        # email = request.POST['email']
+        password = request.POST['password']
+        username = request.POST['username']
+        user = auth.authenticate(username=username,password=password)
+
+        if user is not None:
+            auth.login(request,user)
+            return redirect('/')
+        else:
+            messages.info(request, 'Invalid Credentials')
+            return redirect('login')
+    else:
+        return render(request, 'login.html')
+
+def logout(request):
+    auth.logout(request)
+    return render(request, 'index.html')
